@@ -9,7 +9,31 @@ function App() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [streamedText, setStreamedText] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("Python");
   const messagesEndRef = useRef(null);
+
+  const languages = [
+    { code: "Python", name: "Python", icon: "🐍" },
+    { code: "JavaScript", name: "JavaScript", icon: "🟨" },
+    { code: "TypeScript", name: "TypeScript", icon: "🔷" },
+    { code: "Java", name: "Java", icon: "☕" },
+    { code: "C++", name: "C++", icon: "⚡" },
+    { code: "C#", name: "C#", icon: "💜" },
+    { code: "Go", name: "Go", icon: "🔵" },
+    { code: "Rust", name: "Rust", icon: "🦀" },
+    { code: "PHP", name: "PHP", icon: "🐘" },
+    { code: "Ruby", name: "Ruby", icon: "💎" },
+    { code: "Swift", name: "Swift", icon: "🍎" },
+    { code: "Kotlin", name: "Kotlin", icon: "🟠" },
+    { code: "Scala", name: "Scala", icon: "🔴" },
+    { code: "R", name: "R", icon: "📊" },
+    { code: "MATLAB", name: "MATLAB", icon: "🧮" },
+    { code: "SQL", name: "SQL", icon: "🗄️" },
+    { code: "HTML", name: "HTML", icon: "🌐" },
+    { code: "CSS", name: "CSS", icon: "🎨" },
+    { code: "Bash", name: "Bash", icon: "💻" },
+    { code: "PowerShell", name: "PowerShell", icon: "🔧" }
+  ];
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -28,7 +52,7 @@ function App() {
         setStreamedText("");
         setLoading(false);
       }
-    }, 10); // speed of streaming
+    }, 5); // faster streaming speed
   };
 
   const sendMessage = async () => {
@@ -40,10 +64,13 @@ function App() {
     setStreamedText("");
 
     try {
-      const res = await fetch("/chat", {
+      const res = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_message: userMsg }),
+        body: JSON.stringify({ 
+          user_message: userMsg,
+          language: selectedLanguage 
+        }),
       });
       let data;
       try {
@@ -90,7 +117,27 @@ function App() {
     <div className="chat-root">
       <div className="chat-container">
         <header className="chat-header">
-          <span role="img" aria-label="bot">🤖</span> BlueBot
+          <div className="header-content">
+            <div className="bot-title">
+              <span role="img" aria-label="bot">🤖</span> BlueBot
+            </div>
+            <div className="language-selector">
+              <select 
+                value={selectedLanguage} 
+                onChange={(e) => setSelectedLanguage(e.target.value)}
+                className="language-dropdown"
+              >
+                {languages.map(lang => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.icon} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="tagline">
+            Your AI companion for intelligent conversations and problem-solving! 🚀
+          </div>
         </header>
         <div className="chat-messages">
           {messages.map((msg, idx) => (
@@ -137,7 +184,25 @@ function App() {
         </div>
       </div>
       <footer className="chat-footer">
-        <span>Powered by FastAPI + Gemini + React</span>
+        <div className="footer-content">
+          <div className="tech-stack">
+            <span>Powered by FastAPI + Gemini + React</span>
+          </div>
+          <div className="developer-credits">
+            <div className="developer-info">
+              <span className="developer-name">Abdullah Malik</span>
+              <span className="developer-title">Full Stack Developer & Automation Engineer</span>
+            </div>
+            <div className="developer-links">
+              <a href="https://github.com/teeps-heisenberg" target="_blank" rel="noopener noreferrer" className="dev-link">
+                <span role="img" aria-label="github">📱</span> Portfolio
+              </a>
+              <a href="https://www.linkedin.com/in/abdullah-malik-dev/" target="_blank" rel="noopener noreferrer" className="dev-link">
+                <span role="img" aria-label="linkedin">💼</span> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
