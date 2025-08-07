@@ -206,6 +206,7 @@ body {
   overflow-x: auto;
   overflow-y: auto;
   max-height: 400px;
+  text-align: left !important;
 }
 
 .chat-bubble::-webkit-scrollbar {

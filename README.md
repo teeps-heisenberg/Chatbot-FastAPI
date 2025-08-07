@@ -7,6 +7,27 @@ A modern, full-stack AI coding assistant powered by Google Gemini, built with Fa
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green)
 ![Gemini](https://img.shields.io/badge/Gemini-2.5--Flash-orange)
 
+## 📱 Demo
+
+### Main Interface
+![BlueBot Interface](frontend/src/assets/bluebot-interface.png)
+
+The BlueBot interface features a modern, responsive design with:
+- Clean chat interface with message bubbles
+- Language selector dropdown with programming language icons
+- Real-time streaming responses for smooth user experience
+- Syntax-highlighted code blocks in responses
+
+### Python Programming Example
+![Python Demo](frontend/src/assets/demo-python.png)
+
+Example showing BlueBot helping with Python programming - filtering prime numbers from a list with detailed explanations and working code examples.
+
+### Multi-Language Support
+![Rust Demo](frontend/src/assets/demo-rust.png)
+
+BlueBot seamlessly switches between programming languages, here showing Rust code for the same prime number filtering task with language-specific syntax and best practices.
+
 ## ✨ Features
 
 ### 🎯 **Core Functionality**
@@ -34,7 +55,7 @@ A modern, full-stack AI coding assistant powered by Google Gemini, built with Fa
 ## 🏗️ Architecture
 
 ```
-Chatbot-FastAPI/
+BlueBot-AI-Assistant/
 ├── api/                    # FastAPI Backend
 │   ├── main.py            # Main API server with Gemini integration
 │   └── __init__.py        # Python package initialization
@@ -43,7 +64,8 @@ Chatbot-FastAPI/
 │   │   ├── App.jsx        # Main React component
 │   │   ├── App.css        # Styling and responsive design
 │   │   ├── main.jsx       # React entry point
-│   │   └── index.css      # Global styles
+│   │   ├── index.css      # Global styles
+│   │   └── assets/        # Demo images and static assets
 │   ├── package.json       # Node.js dependencies
 │   └── vite.config.js     # Vite configuration with proxy
 ├── venv/                  # Python virtual environment
@@ -60,7 +82,7 @@ Chatbot-FastAPI/
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd Chatbot-FastAPI
+cd BlueBot-AI-Assistant
 ```
 
 ### 2. Backend Setup

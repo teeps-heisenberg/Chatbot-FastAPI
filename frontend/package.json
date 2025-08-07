@@ -1,7 +1,8 @@
 {
-  "name": "frontend",
+  "name": "bluebot-ai-assistant-frontend",
+  "description": "React frontend for BlueBot AI Coding Assistant - A modern AI-powered programming assistant",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
